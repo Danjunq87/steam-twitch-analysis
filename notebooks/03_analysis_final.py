@@ -85,6 +85,14 @@ for col in ['watch_time_hours', 'peak_viewers', 'peak_channels', 'streamers']:
 indie_manual = ['among us', 'bloons td 6', 'r.e.p.o.']
 merged_all.loc[merged_all['name_lower'].isin(indie_manual), 'indie'] = True
 
+# Remove duplicata do Among Us (mantém o maior)
+merged_all = merged_all.sort_values('watch_time_hours', ascending=False)
+merged_all = merged_all.drop_duplicates(subset='name', keep='first')
+
+# Corrige Peak para Multiplayer (jogo co-op de escalada)
+merged_all.loc[merged_all['name'] == 'Peak', 'tipo'] = 'Multiplayer'
+
+print(f"Após deduplicação: {len(merged_all)} jogos")
 # Separa indie e não-indie
 df_indie = merged_all[merged_all['indie']].copy()
 df_nao_indie = merged_all[~merged_all['indie']].copy()
