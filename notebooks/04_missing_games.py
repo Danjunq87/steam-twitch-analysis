@@ -34,13 +34,25 @@ nao_jogos = [
     'casino jackpot', 'marvel contest of champions', 'fitness & health',
     'writing & reading', 'science & technology', 'tabletop rpgs',
     'baller league', 'rv there yet?', 'politics', 'active matter',
-    'marvel strike force', 'kukoro: stream chat games'
+    'marvel strike force', 'kukoro: stream chat games','pokemon community game', 'pokemon trading card game', 'rise online',
+    'ea sports college football 26', 'the simpsons: hit & run',
 ]
 
 # ============================================================
 # JOGOS FORA DA STEAM (Nintendo, Riot, Blizzard, etc)
 # ============================================================
 fora_steam_keywords = [
+    'megabonk', 'ghost of tsushima', 'grand theft auto iv', 'metal gear solid 3',
+    'metal gear solid ?:', 'monster hunter freedom', 'gears of war',
+    'dragon quest', 'lego party', 'shine post', 'chrono odyssey',
+    'south of midnight', 'neighbors: suburban warfare',
+    'star citizen', 'ghost of yotei', 'ghost of yo', 'gran turismo',
+    'stellar blade', 'metal gear solid delta', 'metal gear solid ?:',
+    'persona 5', 'age of empires iv',
+    'arena breakout', 'tibia', 'heroes of the storm', '2xko', 'bloodborne',
+    'ghost of yotei', 'standoff 2', 'pokemon go', 'osu!', 'age of empires iv',
+    'f1 25', 'ea sports college football', 'marathon', 'black russia',
+    'mir korabley', 'stalzone', 'kagome', 'kagome 2', 'kagome 3', 'kagome 4', 'kagome 5', 'kagome 6', 'kagome 7', 'kagome 8', 'kagome 9', 'kagome 10',
     'pokemon', 'mario', 'zelda', 'splatoon', 'smash bros', 'donkey kong',
     'animal crossing', 'metroid', 'fire emblem', 'kirby', 'xenoblade',
     'league of legends', 'valorant', 'teamfight tactics', 'wild rift',
@@ -53,7 +65,12 @@ fora_steam_keywords = [
     'summoners war', 'crystal of atlan', 'mir ', 'lineage', 'aion',
     'mu online', 'mir4', 'knight online', 'ragnarok', 'metin2',
     'dragon ball', 'inazuma eleven', 'digimon', 'yu-gi-oh',
-    'final fantasy tactics', 'mario kart world',
+    'final fantasy tactics', 'mario kart world','grand theft auto v', 'grand theft auto: san andreas', 'grand theft auto: vice city',
+    'grand theft auto iv', 'roblox', 'sea of thieves', 'battlefield redsec',
+    'mlb the show', 'madden nfl', 'nba 2k2', 'borderlands 4', 'silent hill f',
+    'maplestory worlds', 'stalzone', 'dispatch', 'off the grid',
+    'rematch', 'mecha break', 'age of empires iv','silent hill f', 'grounded 2', 'little nightmares iii', 'wwe 2k25',
+    'the last of us', 'football manager 26', 'europa universalis v','europa universalis iv', 'europa universalis iii', 'europa universalis ii', 'europa universalis',
 ]
 
 def classificar_disponibilidade(game_lower, jogos_steam):
@@ -66,7 +83,22 @@ def classificar_disponibilidade(game_lower, jogos_steam):
             return 'Not on Steam'
     return 'Unknown'
 
-jogos_steam = list(indie['name'].str.lower()) + list(nao_indie['name'].str.lower())
+# Usa a mesma função de limpeza do script principal
+import re
+def limpar_nome(nome):
+    if pd.isna(nome): return ''
+    nome = re.sub(r'[™®©ƒ]', '', nome)
+    nome = re.sub(r'\bII\b', '2', nome)
+    nome = re.sub(r'\bIII\b', '3', nome)
+    nome = re.sub(r'\bIV\b', '4', nome)
+    nome = re.sub(r'\bVI\b', '6', nome)
+    nome = re.sub(r'\bVII\b', '7', nome)
+    nome = re.sub(r'\bVIII\b', '8', nome)
+    nome = re.sub(r'\s+', ' ', nome).strip()
+    return nome.lower()
+
+jogos_steam = list(indie['name'].apply(limpar_nome)) + list(nao_indie['name'].apply(limpar_nome))
+twitch['game_lower'] = twitch['game'].fillna('').apply(limpar_nome)
 twitch['disponibilidade'] = twitch['game_lower'].apply(
     lambda x: classificar_disponibilidade(x, jogos_steam))
 
