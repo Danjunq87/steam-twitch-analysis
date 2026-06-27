@@ -62,6 +62,9 @@ nao_jogos = [
 # JOGOS FORA DA STEAM (Nintendo, Riot, Blizzard, etc)
 # ============================================================
 fora_steam_keywords = [
+    'banjo-kazooie', 'demon\'s souls', 'fate/grand order', 'sonic the hedgehog',
+    'monopoly plus', 'identity v', 'arknights', 'solo leveling',
+    'twitch plays', 'fever meme', 'nextworld', 'bleach rebirth',
     'astro bot', 'disney lorcana', 'metal gear solid 4', 'half-life',
     'gears 5', 'pubg: black budget', 'maitre des fleurs',
     'horizon forbidden west','nhl 26', 'uncharted', 'destiny: rising', 'cabal online',
