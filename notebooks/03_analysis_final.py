@@ -142,12 +142,33 @@ merged_all = merged_all.sort_values('watch_time_hours', ascending=False)
 merged_all = merged_all.drop_duplicates(subset='name', keep='first')
 
 print(f"Após deduplicação: {len(merged_all)} jogos")
+# Remove versões Dark Souls com caracteres especiais (serão adicionadas manualmente com horas corretas)
+merged_all = merged_all[~merged_all['name'].str.contains('DARK SOULS', na=False)]
 
 # ============================================================
 # 4. ADICIONA JOGOS NÃO DISPONÍVEIS NA STEAM
 # ============================================================
 # Jogos lançados após março 2025 - não estão no dataset Steam
 jogos_faltando = [
+    {'name': 'Dark Souls', 'tipo': 'Single Player', 'indie': False, 'price': 19.99, 'release_date': '2012-08-24', 'watch_time_hours': 1660705.0},
+    {'name': 'Dark Souls II', 'tipo': 'Single Player', 'indie': False, 'price': 19.99, 'release_date': '2014-04-25', 'watch_time_hours': 14579350.0},
+    {'name': 'Dark Souls III', 'tipo': 'Single Player', 'indie': False, 'price': 59.99, 'release_date': '2016-04-12', 'watch_time_hours': 14379454.0},
+    {'name': 'Dark Souls: Remastered', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2018-05-25', 'watch_time_hours': 12614951.0},
+    {'name': 'Bloodborne', 'tipo': 'Single Player', 'indie': False, 'price': 0.0, 'release_date': '2015-03-24'},
+    {'name': 'Inscryption', 'tipo': 'Single Player', 'indie': True, 'price': 19.99, 'release_date': '2021-10-19'},
+    {'name': 'Poppy Playtime: Chapter 3 - Deep Sleep', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2024-01-30'},
+    {'name': 'The Witcher 2: Assassins of Kings', 'tipo': 'Single Player', 'indie': False, 'price': 9.99, 'release_date': '2011-05-17'},
+    {'name': 'Battlefield 4', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2013-10-29'},
+    {'name': 'Need for Speed: Heat', 'tipo': 'Multiplayer', 'indie': False, 'price': 29.99, 'release_date': '2019-11-08'},
+    {'name': 'Counter-Strike 1.6', 'tipo': 'Multiplayer', 'indie': False, 'price': 9.99, 'release_date': '2000-11-01'},
+    {'name': 'The Hundred Line -Last Defense Academy-', 'tipo': 'Single Player', 'indie': False, 'price': 59.99, 'release_date': '2025-04-24'},
+    {'name': 'Deadzone: Rogue', 'tipo': 'Single Player', 'indie': True, 'price': 14.99, 'release_date': '2025-01-01'},
+    {'name': 'Nubby\'s Number Factory', 'tipo': 'Single Player', 'indie': True, 'price': 4.99, 'release_date': '2025-01-01'},
+    {'name': 'Shape of Dreams', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'The Boba Teashop', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'Absolum', 'tipo': 'Single Player', 'indie': True, 'price': 19.99, 'release_date': '2025-01-01'},
+    {'name': 'Night Crows', 'tipo': 'MMO', 'indie': False, 'price': 0.0, 'release_date': '2024-03-20'},
+    {'name': 'Rush Royale', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2021-01-01'},
     {'name': 'Disco Elysium', 'tipo': 'Single Player', 'indie': True, 'price': 39.99, 'release_date': '2019-10-15'},
     {'name': 'The Elder Scrolls III: Morrowind', 'tipo': 'Single Player', 'indie': False, 'price': 9.99, 'release_date': '2002-04-29'},
     {'name': 'BioShock Remastered', 'tipo': 'Single Player', 'indie': False, 'price': 0.0, 'release_date': '2016-09-15'},
@@ -385,24 +406,36 @@ twitch_completo = pd.DataFrame({
 })
 
 for jogo in jogos_faltando:
-    twitch_row = buscar_linha_twitch(twitch_completo, jogo.get('twitch_name', jogo['name']))
-    if twitch_row is not None:
-        row = twitch_row
-        jogo['watch_time_hours'] = float(str(row['watch_time_hours']).replace(',', ''))
-        jogo['peak_viewers'] = float(str(row['peak_viewers']).replace(',', ''))
-        jogo['streamers'] = float(str(row['streamers']).replace(',', ''))
-        jogo['pct_pos_total'] = None
-        jogo['estimated_owners'] = None
-        jogo['metacritic_score'] = None
-        jogo['peak_ccu'] = None
-        jogo['positive'] = None
-        jogo['negative'] = None
-        jogo['categoria'] = 'Não-Indie'
+    if 'watch_time_hours' not in jogo:
+        twitch_row = buscar_linha_twitch(twitch_completo, jogo.get('twitch_name', jogo['name']))
+        if twitch_row is not None:
+            row = twitch_row
+            jogo['watch_time_hours'] = float(str(row['watch_time_hours']).replace(',', ''))
+            jogo['peak_viewers'] = float(str(row['peak_viewers']).replace(',', ''))
+            jogo['streamers'] = float(str(row['streamers']).replace(',', ''))
+            jogo['pct_pos_total'] = None
+            jogo['estimated_owners'] = None
+            jogo['metacritic_score'] = None
+            jogo['peak_ccu'] = None
+            jogo['positive'] = None
+            jogo['negative'] = None
+            jogo['categoria'] = 'Não-Indie'
+    else:
+        jogo['categoria'] = 'Não-Indie' if not jogo.get('indie') else 'Indie'
+        jogo.setdefault('peak_viewers', None)
+        jogo.setdefault('streamers', None)
+        jogo.setdefault('pct_pos_total', None)
+        jogo.setdefault('estimated_owners', None)
+        jogo.setdefault('metacritic_score', None)
+        jogo.setdefault('peak_ccu', None)
+        jogo.setdefault('positive', None)
+        jogo.setdefault('negative', None)
 
 df_extras = pd.DataFrame([j for j in jogos_faltando if 'watch_time_hours' in j])
 print(f"Jogos extras adicionados: {len(df_extras)}")
 
 merged_all = pd.concat([merged_all, df_extras], ignore_index=True)
+
 
 # ============================================================
 # 5. SEPARA INDIE E NÃO-INDIE

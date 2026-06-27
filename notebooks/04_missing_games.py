@@ -62,6 +62,9 @@ nao_jogos = [
 # JOGOS FORA DA STEAM (Nintendo, Riot, Blizzard, etc)
 # ============================================================
 fora_steam_keywords = [
+    'fate/grand order', 'pawafuru', 'tomodachi life', 'world of tanks console',
+    'plants vs. zombies', 'risk: the game', 'prime world', 'stream raiders',
+    'counter-strike online', 'night crows',
     'banjo-kazooie', 'demon\'s souls', 'fate/grand order', 'sonic the hedgehog',
     'monopoly plus', 'identity v', 'arknights', 'solo leveling',
     'twitch plays', 'fever meme', 'nextworld', 'bleach rebirth',
