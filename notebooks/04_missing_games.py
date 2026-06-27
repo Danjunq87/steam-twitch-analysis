@@ -24,6 +24,13 @@ twitch = twitch.groupby('game', as_index=False).agg({
 # CATEGORIAS DE NÃO-JOGOS
 # ============================================================
 nao_jogos = [
+    'ufl', 'disney lorcana trading card game',
+    'talk shows & podcasts', 'animals, aquariums, and zoos',
+    'pools, hot tubs, and beaches', 'co-working & studying',
+    'rv there yet?', 'food & drink', 'makers & crafting',
+    'science & technology', 'fitness & health', 'writing & reading',
+    'lego & brickbuilding', 'miniatures & models', 'stocks and bonds',
+    'one piece card game', 'board games', 'pokerogue', 'pokemmo',
     'talk shows & podcasts', 'animals, aquariums, and zoos', 
     'pools, hot tubs, and beaches', 'co-working & studying',
     'rv there yet?', 'food & drink', 'makers & crafting',
@@ -55,7 +62,11 @@ nao_jogos = [
 # JOGOS FORA DA STEAM (Nintendo, Riot, Blizzard, etc)
 # ============================================================
 fora_steam_keywords = [
-    'horizon forbidden west',
+    'astro bot', 'disney lorcana', 'metal gear solid 4', 'half-life',
+    'gears 5', 'pubg: black budget', 'maitre des fleurs',
+    'horizon forbidden west','nhl 26', 'uncharted', 'destiny: rising', 'cabal online',
+    'rf online', 'miniRoyale', 'gta: la heist', 'pokerogue',
+    'final fantasy vii remake', 'batman: arkham asylum',
     'arena of valor', 'honor of kings', 'alliance of valiant arms',
     'just dance', 'pokedmmo', 'clone hero', 'age of mythology',
     'game of thrones: kingsroad', 'heroes of newerth',
