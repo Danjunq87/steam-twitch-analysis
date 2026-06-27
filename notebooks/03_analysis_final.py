@@ -1,9 +1,9 @@
 import pandas as pd
 import ast
-import re
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from game_utils import limpar_nome, normalizar_nome_twitch, buscar_linha_twitch
 
 # ============================================================
 # 1. CARREGA OS DADOS
@@ -66,31 +66,30 @@ nao_jogos = ['just chatting', 'always on', 'retro', 'irl', 'asmr',
              'special events', 'kings league', 'la velada', 'anime squad',
              'always on', 'stream university', 'the game awards']
 
-import re
-
-def limpar_nome(nome):
-    if pd.isna(nome):
-        return ''
-    nome = re.sub(r'[™®©ƒ]', '', nome)
-    # Converte romanos comuns para números
-    nome = re.sub(r'\bII\b', '2', nome)
-    nome = re.sub(r'\bIII\b', '3', nome)
-    nome = re.sub(r'\bIV\b', '4', nome)
-    nome = re.sub(r'\bVI\b', '6', nome)
-    nome = re.sub(r'\bVII\b', '7', nome)
-    nome = re.sub(r'\bVIII\b', '8', nome)
-    nome = re.sub(r'\s+', ' ', nome).strip()
-    return nome.lower()
+twitch['game'] = twitch['game'].fillna('').apply(normalizar_nome_twitch)
+for col in ['watch_time_hours', 'stream_time_hours', 'peak_viewers', 'peak_channels', 'streamers']:
+    twitch[col] = twitch[col].astype(str).str.replace(',', '', regex=False)
+twitch = twitch.groupby('game', as_index=False).agg({
+    'rank': 'min',
+    'watch_time_hours': lambda s: pd.to_numeric(s, errors='coerce').max(),
+    'stream_time_hours': lambda s: pd.to_numeric(s, errors='coerce').max(),
+    'peak_viewers': lambda s: pd.to_numeric(s, errors='coerce').max(),
+    'peak_channels': lambda s: pd.to_numeric(s, errors='coerce').max(),
+    'streamers': lambda s: pd.to_numeric(s, errors='coerce').max(),
+})
 
 steam['name_lower'] = steam['name'].apply(limpar_nome)
-twitch['game_lower'] = twitch['game'].fillna('').apply(limpar_nome)
+twitch['game_lower'] = twitch['game'].apply(limpar_nome)
 
 merged_all = steam.merge(twitch, left_on='name_lower', right_on='game_lower', how='inner')
 merged_all = merged_all[~merged_all['name_lower'].isin(nao_jogos)].copy()
 
 # Limpa números
 for col in ['watch_time_hours', 'peak_viewers', 'peak_channels', 'streamers']:
-    merged_all[col] = merged_all[col].str.replace(',', '').astype(float)
+    merged_all[col] = pd.to_numeric(
+        merged_all[col].astype(str).str.replace(',', '', regex=False),
+        errors='coerce',
+    )
 
 # Correções manuais de indie
 indie_manual = ['among us', 'bloons td 6', 'r.e.p.o.']
@@ -147,8 +146,52 @@ print(f"Após deduplicação: {len(merged_all)} jogos")
 # ============================================================
 # 4. ADICIONA JOGOS NÃO DISPONÍVEIS NA STEAM
 # ============================================================
+# Jogos lançados após março 2025 - não estão no dataset Steam
 jogos_faltando = [
-    # Jogos lançados após março 2025 - não estão no dataset Steam
+    {'name': 'Tormented Souls 2', 'tipo': 'Single Player', 'indie': True, 'price': 19.99, 'release_date': '2025-01-01'},
+    {'name': 'Alan Wake II', 'tipo': 'Single Player', 'indie': False, 'price': 59.99, 'release_date': '2023-10-27'},
+    {'name': 'Batman: Arkham Origins', 'tipo': 'Single Player', 'indie': False, 'price': 19.99, 'release_date': '2013-10-25'},
+    {'name': 'Dead Space', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2023-01-27'},
+    {'name': 'EA Sports FC 24', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2023-09-29'},
+    {'name': 'BloodStrike', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2023-01-01'},
+    {'name': 'Tomb Raider I-III Remastered', 'tipo': 'Single Player', 'indie': False, 'price': 29.99, 'release_date': '2024-02-14'},
+    {'name': 'Pushing It! Together: Sisyphus Co-Op', 'tipo': 'Multiplayer', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'KARMA: The Dark World', 'tipo': 'Single Player', 'indie': False, 'price': 24.99, 'release_date': '2025-03-27'},
+    {'name': 'Age of Mythology: Retold', 'tipo': 'Multiplayer', 'indie': False, 'price': 49.99, 'release_date': '2024-09-04'},
+    {'name': 'Guilty as Sock!', 'tipo': 'Multiplayer', 'indie': True, 'price': 0.0, 'release_date': '2025-01-01'},
+    {'name': 'Eldegarde', 'tipo': 'Single Player', 'indie': True, 'price': 14.99, 'release_date': '2025-01-01'},
+    {'name': 'Stronghold: Crusader - Definitive Edition', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2024-11-07'},
+    {'name': 'Emissary Zero', 'tipo': 'Multiplayer', 'indie': True, 'price': 0.0, 'release_date': '2025-01-01'},
+    {'name': '9 Kings', 'tipo': 'Multiplayer', 'indie': True, 'price': 0.0, 'release_date': '2025-01-01'},
+    {'name': "I'm on Observation Duty 8", 'tipo': 'Single Player', 'indie': True, 'price': 4.99, 'release_date': '2025-01-01'},
+    {'name': 'MindsEye', 'tipo': 'Single Player', 'indie': False, 'price': 49.99, 'release_date': '2025-06-10'},
+    {'name': 'Metal Gear Solid 2: Sons of Liberty', 'tipo': 'Single Player', 'indie': False, 'price': 0.0, 'release_date': '2002-11-12'},
+    {'name': 'Ninja Gaiden 4', 'tipo': 'Single Player', 'indie': False, 'price': 49.99, 'release_date': '2025-01-01'},
+    {'name': 'Battlefield 2042', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2021-11-19'},
+    {'name': 'Mass Effect Legendary Edition', 'tipo': 'Single Player', 'indie': False, 'price': 59.99, 'release_date': '2021-05-14'},
+    {'name': 'Star Wars: The Old Republic', 'tipo': 'MMO', 'indie': False, 'price': 0.0, 'release_date': '2011-12-20'},
+    {'name': 'For Honor', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2017-02-14'},
+    {'name': 'theHunter: Call of the Wild', 'tipo': 'Multiplayer', 'indie': False, 'price': 39.99, 'release_date': '2017-02-16'},
+    {'name': 'Batman: Arkham Knight', 'tipo': 'Single Player', 'indie': False, 'price': 19.99, 'release_date': '2015-06-23'},
+    {'name': 'Battlefield 1', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2016-10-21'},
+    {'name': 'NieR: Automata', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2017-03-17'},
+    {'name': 'The Crew: Motorfest', 'tipo': 'Multiplayer', 'indie': False, 'price': 49.99, 'release_date': '2023-09-14'},
+    {'name': 'Until Dawn', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2024-10-04'},
+    {'name': 'Need for Speed: Most Wanted', 'tipo': 'Multiplayer', 'indie': False, 'price': 19.99, 'release_date': '2012-10-30'},
+    {'name': 'Tomb Raider I-III Remastered', 'tipo': 'Single Player', 'indie': False, 'price': 29.99, 'release_date': '2024-02-14'},
+    {'name': 'Out of the Park Baseball 26', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2025-03-14'},
+    {'name': 'EA Sports UFC 5', 'tipo': 'Multiplayer', 'indie': False, 'price': 69.99, 'release_date': '2023-10-27'},
+    {'name': 'The Simpsons: Hit & Run', 'tipo': 'Single Player', 'indie': False, 'price': 0.0, 'release_date': '2003-09-16'},
+    {'name': 'Hell is Us', 'tipo': 'Single Player', 'indie': False, 'price': 39.99, 'release_date': '2025-09-04'},
+    {'name': 'Titan Quest II', 'tipo': 'Multiplayer', 'indie': False, 'price': 39.99, 'release_date': '2025-01-01'},
+    {'name': 'ARKNIGHTS: ENDFIELD', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2025-01-01'},
+    {'name': 'The King is Watching', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'ROUTINE', 'tipo': 'Single Player', 'indie': True, 'price': 24.99, 'release_date': '2025-01-01'},
+    {'name': 'Who\'s at the Door?', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'Cash Cleaner Simulator', 'tipo': 'Single Player', 'indie': True, 'price': 14.99, 'release_date': '2025-01-01'},
+    {'name': 'Prison Escape Simulator: Dig Out', 'tipo': 'Single Player', 'indie': True, 'price': 9.99, 'release_date': '2025-01-01'},
+    {'name': 'STORY OF SEASONS: Grand Bazaar', 'tipo': 'Single Player', 'indie': False, 'price': 49.99, 'release_date': '2025-07-10'},
+    {'name': 'Warhammer 40,000: Boltgun', 'tipo': 'Single Player', 'indie': False, 'price': 24.99, 'release_date': '2023-05-23'},
     {'name': 'Megabonk', 'tipo': 'Multiplayer', 'indie': True, 'price': 0.0, 'release_date': '2025-01-01'},
     {'name': 'Half Sword', 'tipo': 'Single Player', 'indie': True, 'price': 19.99, 'release_date': '2025-02-27'},
     {'name': 'Baby Steps', 'tipo': 'Single Player', 'indie': True, 'price': 19.99, 'release_date': '2025-05-29'},
@@ -195,6 +238,10 @@ jogos_faltando = [
     {'name': 'Left 4 Dead 2', 'tipo': 'Multiplayer', 'indie': False, 'price': 9.99, 'release_date': '2009-11-17'},
     {'name': 'Persona 5 Royal', 'tipo': 'Single Player', 'indie': False, 'price': 59.99, 'release_date': '2022-10-21'},
     {'name': 'Metal Gear Solid Delta: Snake Eater', 'tipo': 'Single Player', 'indie': False, 'price': 49.99, 'release_date': '2025-08-28'},
+    {'name': 'Silent Hill f', 'tipo': 'Single Player', 'indie': False, 'price': 69.99, 'release_date': '2025-09-25'},
+    {'name': 'Portal 2', 'tipo': 'Single Player', 'indie': False, 'price': 9.99, 'release_date': '2011-04-19'},
+    {'name': 'Grand Theft Auto IV', 'tipo': 'Single Player', 'indie': False, 'price': 0.0, 'release_date': '2008-12-02'},
+    {'name': 'Ghost of Yotei', 'tipo': 'Single Player', 'indie': False, 'price': 69.99, 'release_date': '2025-10-02'},
     {'name': 'skate.', 'tipo': 'Multiplayer', 'indie': False, 'price': 0.0, 'release_date': '2025-01-01'},
     {'name': 'Broken Arrow', 'tipo': 'Multiplayer', 'indie': False, 'price': 39.99, 'release_date': '2025-04-24'},
     {'name': 'Legend of YMIR', 'tipo': 'MMO', 'indie': False, 'price': 0.0, 'release_date': '2025-01-01'},
@@ -274,9 +321,9 @@ twitch_completo = pd.DataFrame({
 })
 
 for jogo in jogos_faltando:
-    twitch_row = twitch_completo[twitch_completo['game'] == jogo['name']]
-    if len(twitch_row) > 0:
-        row = twitch_row.iloc[0]
+    twitch_row = buscar_linha_twitch(twitch_completo, jogo.get('twitch_name', jogo['name']))
+    if twitch_row is not None:
+        row = twitch_row
         jogo['watch_time_hours'] = float(str(row['watch_time_hours']).replace(',', ''))
         jogo['peak_viewers'] = float(str(row['peak_viewers']).replace(',', ''))
         jogo['streamers'] = float(str(row['streamers']).replace(',', ''))

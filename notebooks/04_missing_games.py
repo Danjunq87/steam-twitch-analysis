@@ -1,4 +1,5 @@
 import pandas as pd
+from game_utils import limpar_nome, normalizar_nome_twitch
 
 # Carrega dados
 twitch_raw = pd.read_csv('data/sullygnome_top2000.csv')
@@ -10,13 +11,25 @@ twitch = pd.DataFrame({
     'game': twitch_raw['watch_time_hours'],
     'watch_time_hours': twitch_raw['stream_time_hours'],
 })
+twitch['game'] = twitch['game'].fillna('').apply(normalizar_nome_twitch)
+twitch['game_lower'] = twitch['game'].apply(limpar_nome)
 twitch['watch_time_hours'] = twitch['watch_time_hours'].str.replace(',', '').astype(float)
-twitch['game_lower'] = twitch['game'].str.lower().str.strip()
+twitch = twitch.groupby('game', as_index=False).agg({
+    'rank': 'min',
+    'watch_time_hours': 'max',
+    'game_lower': 'first',
+})
 
 # ============================================================
 # CATEGORIAS DE NÃO-JOGOS
 # ============================================================
 nao_jogos = [
+    'talk shows & podcasts', 'animals, aquariums, and zoos', 
+    'pools, hot tubs, and beaches', 'co-working & studying',
+    'rv there yet?', 'food & drink', 'makers & crafting',
+    'science & technology', 'fitness & health', 'writing & reading',
+    'lego & brickbuilding', 'miniatures & models', 'board games',
+    'fright fest', "no, i'm not a human",
     'just chatting', 'always on', 'retro', 'irl', 'asmr', 'music', 'art',
     'sports', 'poker', 'slots', 'crypto', 'virtual casino', 'djs',
     'talk shows & podcasts', 'animals, aquariums, and zoos', 'games + demos',
@@ -42,6 +55,18 @@ nao_jogos = [
 # JOGOS FORA DA STEAM (Nintendo, Riot, Blizzard, etc)
 # ============================================================
 fora_steam_keywords = [
+    'horizon forbidden west',
+    'arena of valor', 'honor of kings', 'alliance of valiant arms',
+    'just dance', 'pokedmmo', 'clone hero', 'age of mythology',
+    'game of thrones: kingsroad', 'heroes of newerth',
+    'ninja gaiden 4', 'final fantasy vii remake',
+    'osu!', 'star wars battlefront', 'nhl 25', 'the sims 2', 'clubhouse games',
+    'talk shows & podcasts', 'animals, aquariums, and zoos', 'pools, hot tubs, and beaches',
+    'co-working & studying', 'rv there yet?', 'food & drink', 'makers & crafting',
+    'science & technology', 'fitness & health', 'writing & reading', 'lego & brickbuilding',
+    'miniatures & models', 'warhammer', 'casino', 'mystery science theater 3000',
+    'dream con', "no, i'm not a human", 'dungeons & dragons', 'mamon king',
+    'shine post: be your idol!', 'baller league',
     'megabonk', 'ghost of tsushima', 'grand theft auto iv', 'metal gear solid 3',
     'metal gear solid ?:', 'monster hunter freedom', 'gears of war',
     'dragon quest', 'lego party', 'shine post', 'chrono odyssey',
@@ -53,7 +78,7 @@ fora_steam_keywords = [
     'ghost of yotei', 'standoff 2', 'pokemon go', 'osu!', 'age of empires iv',
     'f1 25', 'ea sports college football', 'marathon', 'black russia',
     'mir korabley', 'stalzone', 'kagome', 'kagome 2', 'kagome 3', 'kagome 4', 'kagome 5', 'kagome 6', 'kagome 7', 'kagome 8', 'kagome 9', 'kagome 10',
-    'pokemon', 'mario', 'zelda', 'splatoon', 'smash bros', 'donkey kong',
+    'pokemon', 'pokémon', 'mario', 'zelda', 'splatoon', 'smash bros', 'donkey kong',
     'animal crossing', 'metroid', 'fire emblem', 'kirby', 'xenoblade',
     'league of legends', 'valorant', 'teamfight tactics', 'wild rift',
     'hearthstone', 'overwatch', 'warcraft', 'starcraft', 'diablo',
@@ -83,22 +108,7 @@ def classificar_disponibilidade(game_lower, jogos_steam):
             return 'Not on Steam'
     return 'Unknown'
 
-# Usa a mesma função de limpeza do script principal
-import re
-def limpar_nome(nome):
-    if pd.isna(nome): return ''
-    nome = re.sub(r'[™®©ƒ]', '', nome)
-    nome = re.sub(r'\bII\b', '2', nome)
-    nome = re.sub(r'\bIII\b', '3', nome)
-    nome = re.sub(r'\bIV\b', '4', nome)
-    nome = re.sub(r'\bVI\b', '6', nome)
-    nome = re.sub(r'\bVII\b', '7', nome)
-    nome = re.sub(r'\bVIII\b', '8', nome)
-    nome = re.sub(r'\s+', ' ', nome).strip()
-    return nome.lower()
-
 jogos_steam = list(indie['name'].apply(limpar_nome)) + list(nao_indie['name'].apply(limpar_nome))
-twitch['game_lower'] = twitch['game'].fillna('').apply(limpar_nome)
 twitch['disponibilidade'] = twitch['game_lower'].apply(
     lambda x: classificar_disponibilidade(x, jogos_steam))
 
