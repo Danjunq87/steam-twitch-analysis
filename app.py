@@ -93,10 +93,12 @@ with col_d:
     media_indie_2025 = jogos_2025_indie['watch_time_hours'].mean() / 1_000_000 if len(jogos_2025_indie) > 0 else 0
     media_indie_old = df_indie[df_indie['release_year'] < 2025]['watch_time_hours'].mean() / 1_000_000
     st.success(f"""
-    **📅 New vs Legacy Indie Games**
+   
+    **New vs Legacy Indie Games**
     
     2025 indie releases average **{media_indie_2025:.1f}M watch hours** vs 
-    **{media_indie_old:.1f}M** for older titles — new releases get a significant Twitch boost.
+    **{media_indie_old:.1f}M** for established titles — legacy games maintain strong audiences 
+    while 2025 newcomers like R.E.P.O., Peak and Schedule I are already competing at the top.
     """)
 
 with col_e:
@@ -313,6 +315,101 @@ fig_rev2 = px.bar(analise_review, x='faixa_review', y='media_streamers',
 fig_rev2.update_traces(texttemplate='%{text} games', textposition='outside')
 fig_rev2.update_yaxes(tickformat='.2s')
 col_rev2.plotly_chart(fig_rev2, use_container_width=True)
+
+# ============================================================
+# SEÇÃO: STEAM COVERAGE ANALYSIS
+# ============================================================
+st.header("🗺️ Where Are These Games Distributed?")
+st.caption("Analysis of the top 1000 most-watched games on Twitch in 2025 by distribution platform.")
+
+disponibilidade = pd.read_csv("data/disponibilidade_steam.csv")
+disponibilidade['label'] = disponibilidade['disponibilidade'].map({
+    'On Steam': '🟢 On Steam',
+    'Not on Steam': '🔴 Not on Steam',
+    'Non-Game Content': '⬜ Non-Game Content',
+    'Unknown': '⚪ Unclassified'
+})
+
+col_pie1, col_pie2 = st.columns([1, 1])
+
+fig_pie = px.pie(
+    disponibilidade,
+    names='label',
+    values='total_watch_hours',
+    title='Watch Hours Distribution by Platform Availability',
+    color='label',
+    color_discrete_map={
+        '🟢 On Steam': '#2ecc71',
+        '🔴 Not on Steam': '#e74c3c',
+        '⬜ Non-Game Content': '#95a5a6',
+        '⚪ Unclassified': '#bdc3c7'
+    },
+    hole=0.4
+)
+fig_pie.update_traces(textposition='outside', textinfo='percent+label')
+col_pie1.plotly_chart(fig_pie, use_container_width=True)
+
+with col_pie2:
+    st.markdown("### Key Findings")
+    on_steam = disponibilidade[disponibilidade['disponibilidade'] == 'On Steam'].iloc[0]
+    not_steam = disponibilidade[disponibilidade['disponibilidade'] == 'Not on Steam'].iloc[0]
+    non_game = disponibilidade[disponibilidade['disponibilidade'] == 'Non-Game Content'].iloc[0]
+    
+    st.info(f"""
+    **🟢 On Steam: {on_steam['pct_horas']:.1f}% of watch hours**
+    
+    {on_steam['qtd_jogos']} games available on Steam account for the majority of Twitch gaming content.
+    """)
+    st.error(f"""
+    **🔴 Not on Steam: {not_steam['pct_horas']:.1f}% of watch hours**
+    
+    {not_steam['qtd_jogos']} major titles (League of Legends, Fortnite, VALORANT, all Nintendo games) 
+    are distributed outside Steam — representing a significant blind spot in Steam-only analysis.
+    """)
+    st.warning(f"""
+    **⬜ Non-Game Content: {non_game['pct_horas']:.1f}% of watch hours**
+    
+    Nearly 1 in 4 Twitch watch hours comes from non-gaming streams like Just Chatting, 
+    IRL, Music and Talk Shows — showing Twitch is much more than a gaming platform.
+    """)
+
+st.divider()
+
+# ============================================================
+# SEÇÃO: VIEWERS VS STREAMERS — OPPORTUNITY INDEX
+# ============================================================
+st.header("🎯 Streaming Opportunity Index")
+st.caption("Games with high viewers but few streamers = less competition for new content creators.")
+
+df_opp = df_indie.copy()
+df_opp['streamers'] = pd.to_numeric(df_opp['streamers'], errors='coerce')
+df_opp['peak_viewers'] = pd.to_numeric(df_opp['peak_viewers'], errors='coerce')
+df_opp = df_opp[df_opp['streamers'] > 100].copy()
+df_opp['opportunity_ratio'] = (df_opp['peak_viewers'] / df_opp['streamers']).round(1)
+df_opp = df_opp.nlargest(15, 'opportunity_ratio')[['name', 'tipo', 'opportunity_ratio', 'peak_viewers', 'streamers', 'watch_time_hours']].copy()
+df_opp['watch_time_hours'] = (df_opp['watch_time_hours'] / 1_000_000).round(1)
+df_opp = df_opp.sort_values('opportunity_ratio', ascending=True)
+
+fig_opp = px.bar(
+    df_opp,
+    x='opportunity_ratio',
+    y='name',
+    color='tipo',
+    orientation='h',
+    title='Top 15 Indie Games — Viewers per Streamer Ratio (Higher = Less Competition)',
+    labels={
+        'opportunity_ratio': 'Viewers per Streamer',
+        'name': 'Game',
+        'tipo': 'Type'
+    },
+    text='opportunity_ratio'
+)
+fig_opp.update_traces(texttemplate='%{text:.0f}x', textposition='outside')
+st.plotly_chart(fig_opp, use_container_width=True)
+
+st.caption("💡 A high ratio means many viewers but few streamers — ideal for new creators looking for less saturated niches.")
+
+st.divider()
 
 # ============================================================
 # SEÇÃO 8: TABELA EXPLORATÓRIA
