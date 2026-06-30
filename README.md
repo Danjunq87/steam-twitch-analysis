@@ -1,12 +1,21 @@
 # 🎮 Indie Games on Twitch — 2025 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://steam-twitch-analysis-2025.streamlit.app/)
-> **Do indie games punch above their weight on Twitch?**
-> An end-to-end data analysis pipeline crossing Steam catalog metadata with Twitch viewership data for the top 1,000 most-watched games of 2025.
+>[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://steam-twitch-analysis-2025.streamlit.app/)
+>**Do indie games punch above their weight on Twitch?**
+>An end-to-end data analysis pipeline crossing Steam catalog metadata with Twitch viewership data for the top 1,000 most-watched games of 2025.
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?logo=streamlit)](https://streamlit.io)
 [![Plotly](https://img.shields.io/badge/Plotly-5.x-3F4F75?logo=plotly)](https://plotly.com)
 [![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas)](https://pandas.pydata.org)
+
+---
+
+## 📸 Dashboard Preview
+
+<img width="1835" height="689" alt="scr1" src="https://github.com/user-attachments/assets/b55f350b-87ae-4381-8810-57cd486cf9cd" />
+<img width="1817" height="657" alt="scr2" src="https://github.com/user-attachments/assets/0c0aab19-7cb2-4f10-9dcf-8a97412499ae" />
+<img width="1832" height="733" alt="scr3" src="https://github.com/user-attachments/assets/77892d54-a596-40fc-ac54-7dd50b04fae7" />
+<img width="1794" height="743" alt="scr4" src="https://github.com/user-attachments/assets/c4ab3848-3ab3-4a0a-8867-fb6a6b961728" />
 
 ---
 
@@ -125,15 +134,6 @@ The project follows a complete ETL (Extract, Transform, Load) workflow, combinin
 - Classifies all 1,000 SullyGnome titles into: On Steam / Not on Steam / Non-Game Content / Unclassified
 - Keyword-based classification with `rapidfuzz` fuzzy matching for ambiguous cases
 - Produces `disponibilidade_steam.csv` used in the dashboard's platform coverage section
-
----
-
-## 📸 Dashboard Preview
-
-<img width="1835" height="689" alt="scr1" src="https://github.com/user-attachments/assets/b55f350b-87ae-4381-8810-57cd486cf9cd" />
-<img width="1817" height="657" alt="scr2" src="https://github.com/user-attachments/assets/0c0aab19-7cb2-4f10-9dcf-8a97412499ae" />
-<img width="1832" height="733" alt="scr3" src="https://github.com/user-attachments/assets/77892d54-a596-40fc-ac54-7dd50b04fae7" />
-<img width="1794" height="743" alt="scr4" src="https://github.com/user-attachments/assets/c4ab3848-3ab3-4a0a-8867-fb6a6b961728" />
 
 ---
 
