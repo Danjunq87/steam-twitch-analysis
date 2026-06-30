@@ -1,4 +1,5 @@
-# 🎮 Indie Games on Twitch — 2025 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://steam-twitch-analysis-2025.streamlit.app/)
+# 🎮 Indie Games on Twitch — 2025 
+>[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://steam-twitch-analysis-2025.streamlit.app/)
 > **Do indie games punch above their weight on Twitch?**  
 > An end-to-end data analysis pipeline crossing Steam catalog metadata with Twitch viewership data for the top 1,000 most-watched games of 2025.
 
@@ -236,7 +237,6 @@ Possible future enhancements include:
 - Automated Steam Store scraping for review score updates.
 - Time-series analysis of Twitch viewership trends.
 - Machine learning models to predict breakout indie titles.
-- Deployment of the Streamlit dashboard to Streamlit Community Cloud.
 - Automated data pipeline using GitHub Actions.
 
 ---
