@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        let isDarkMode = false;
+        if (prefersDarkScheme.matches) {
+            isDarkMode = true;
+        }
+
+        try {
+            let cookieValue = '';
+            const parts = document.cookie.split('SullyGnomeDarkMode=');
+        
+            if (parts.length === 2) 
+            {
+                cookieValue = parts.pop().split(';').shift();
+            }
+
+            if(cookieValue === 'dark')
+            {
+                isDarkMode = true;
+            }
+            else if(cookieValue === 'light')
+            {
+                isDarkMode = false;
+            }
+        }
+        catch(ex) {
+          
+        }
+        if (isDarkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', '');
+        }
+    </script>
+        <link rel="canonical" href="https://sullygnome.com/games" />
+<script type="text/javascript">
+            var sg_a_scCode = "c03de72a";
+            var sg_a_scProject = "10710394";
+            var sg_a_gaCode = "UA-69840346-1";
+            var sg_a_gatagCode = "G-CRC8K335Z5";
+        </script>
+    
+            <script type="text/javascript">
+                try {
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', sg_a_gaCode , 'auto');
+                    ga('send', 'pageview');
+                }
+                catch (ex) {
+
+                }
+
+                try {
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', '//www.googletagmanager.com/gtag/js?id=G-CRC8K335Z5', 'gtag');
+
+                     window.dataLayer = window.dataLayer || [];
+                     function gtag(){dataLayer.push(arguments);}
+                     gtag('js', new Date());
+                     gtag('config', 'G-CRC8K335Z5');
+                }
+                catch (ex) {
+
+                }
+
+                var sc_project = sg_a_scProject; //Update url
+                var sc_invisible = 1;
+                var sc_security = sg_a_scCode;
+                var scJsHost = "https://secure.";
+
+
+            </script>
+            <script async type='text/javascript' src='https://secure.statcounter.com/counter/counter.js'></script>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitch Game Statistics & Analysis - SullyGnome</title>
+    <meta name="description" content="Statistics for games streamed on Twitch" />
+    
+    
+    
+        <link rel="stylesheet" href="/sullystyle.min.css?v=cnYzjKlzKTAu-wkAm-n4OFqjexnDyNhzJMotoxtDhs0" />
+    
+
+
+    
+</head>
+<body>
+    <script type="text/javascript">
+        var PageInfo = {"dayranges":[{"Key":3,"Value":"3 days"},{"Key":7,"Value":"7 days"},{"Key":14,"Value":"14 days"},{"Key":30,"Value":"30 days"},{"Key":90,"Value":"90 days"},{"Key":180,"Value":"180 days"},{"Key":365,"Value":"365 days"},{"Key":0,"Value":"More"}],"defaultsection":"","urlpart":"","id":0,"name":null,"logo":null,"defaultpagesize":50,"defaultLanguageId":0,"additionalparams":"","compareIds":null,"timezoneText":"Timezone (UTC)","timezoneOffset":0,"sitedefaultdayrange":30,"dayRange":365,"dayRangeOffset":0,"latestDayId":4295,"twitchUrl":null,"latestUpdateDay":1782086400000,"lateUpdateTime":1782316800000,"rangeInfo":{"dayRange":365,"dayRangeOffset":0,"isNamedRange":false,"namedRange":"","month":0,"year":0,"range":"365","startDayId":3931,"endDayId":4296},"filterInfo":{"minYear":2016,"maxYear":2026,"minYearMonth":1,"maxYearMonth":5,"filterUrl":"/games/{RANGE}/"},"tablePageSizes":[["10","25","50","100"],["10","25","50","100"]],"timecode":"271907_6/24/2026 6:43:14 PM_8925cf33-695d-4081-8bbc-126d41aea8c4_d045761767971aae2072a45b4e115dd0","language":{"id":0,"twitchText":"","displayName":""},"timezone":"(UTC) Coordinated Universal Time"};
+        var PageData = {"name":"","id":0};
+
+        var RedirectToUrl = function (Url) {
+            window.location.href = Url;
+        }
+
+        var ToggleMoreRangeLinks = function (Container) {
+            var el = document.getElementById(Container);
+
+            if (el.style.display == 'none') {
+                el.style.display = 'block';
+            }
+            else {
+                el.style.display = 'none';
+            }
+        }
+
+    </script>
+
+    <div class="LeftMenu">
+        <div class="LeftMenuHeader">
+            <div class="LeftMenuHeaderTopImage">
+                <a href="/">
+                    <img src="/Images/gnome.png" alt="Hi I'm SullyGnome!" height="48" width="40" />
+                </a>
+            </div>
+        </div>
+
+        <div class="MenuItemWrapper" title="Back to the home page">
+            <a href="/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/home.svg" class="FontAweIcon MenuItemHome" alt="Home" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Home
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="View stats on the channels which stream on Twitch">
+            <a href="/channels/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/tv.svg" class="FontAweIcon" alt="Channels" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Channels
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="View stats on the games streamed on Twitch">
+            <a href="/games/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/gamepad.svg" class="FontAweIcon" alt="Game" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Games
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="View stats on the teams which stream on Twitch">
+            <a href="/teams/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/user-plus.svg" class="FontAweIcon" alt="Teams" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Teams
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="Search for channels by the games they play and broadcast language">
+            <a href="/channelsearch/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/search.svg" class="FontAweIcon" alt="Search" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Search
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="See channels which have reached milestones">
+            <a href="/milestones/365">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/tasks.svg" class="FontAweIcon" alt="Channel milestones" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Milestones
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="Detailed analysis articles on Twitch">
+            <a href="/articlesanalysis">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/newspaper.svg" class="FontAweIcon" alt="Articles" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Articles
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="All about me and the site">
+            <a href="/about">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/male.svg" class="FontAweIcon" alt="About" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        About
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="MenuItemWrapper" title="Support me :)">
+            <a href="https://www.patreon.com/sullygnome" target="_blank">
+                <div class="MenuItem">
+                    <div class="MenuItemPart"><img src="/images/sidebar/Patreon_Mark_Primary.png" class="PatreonIcon" alt="Patreon" /></div>
+                    <div class="MenuItemPart MenuItemPartText">
+                        Patreon
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="LeftMenuFooter">
+            <div class='DarkModeHeader'>Dark mode</div>
+            <div class="DarkmodeWrapper notransition" id='dmWrapper'>
+              <input type="checkbox" id="dmChk" class="notransition"/>
+              <label for="dmChk" class="DarkmodeToggle notransition" onclick='SullyJS.Util.SwitchDarkMode(); return true;'>
+                <span class="DarkmodeSpan notransition" id='dmSpan'>
+                </span>
+              </label>
+            </div>
+
+            <script type='text/javascript'>
+                if(isDarkMode)
+                {
+                    document.getElementById('dmChk').checked = true;
+                }
+            </script>
+            <div class="LeftMenuFooterContact">
+                <div class="LeftMenuFooterContact">
+                    <div class="LeftMenuFooterIcon">
+                        <a href="https://twitter.com/SullyGnome" target='_blank' title="Twitter">
+                            <img height="22" width="22" src="/Images/twitterlatest.png" style="border:0" alt="Message me on Twitter" />
+                        </a>
+                    </div>
+                    <div class="LeftMenuFooterIcon">
+                        <a href="/cdn-cgi/l/email-protection#06656968726765724675736a6a7f6168696b632865696b" target='_blank' title="Email">
+                            <img src="/Images/Email.png" style="border:0" alt="Send me an email" />
+                        </a>
+                    </div>
+                    <div class="LeftMenuFooterIcon">
+                        <a href="https://www.twitch.tv/sullygnome" title="Twitch PM" target='_blank'>
+                            <img src="/Images/TwitchIcon.png" style="border:0" alt="Send me a Twitch PM" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="RightContent">
+        <div class="TopMenu">
+            <div class="SiteTileBar">
+                <div class="SiteTitleBarHeader">
+                    <h2>SullyGnome - Twitch stats and analysis</h2>
+                </div>
+                <div class="SiteTitleBarTimezone">
+                    <a href="" onclick="SullyJS.Util.ShowTimezonePicker(); return false;">Timezone: (UTC) Coordinated Universal Time</a>
+                </div>
+                <div class="SiteTitleBarSearch">
+                    <div id="SearchContainer" class="SiteTitleItem SiteTitleItemSearch" style="position:relative">
+                        
+                        <input id="HeaderChannelGameSearch" placeholder="Search for a game or channel">
+                        <div id="SearchPerforming" style="display:none" class="SearchPerforming">
+                            <span class='spinLoader'></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="MainContent">
+            <div class="PageHeader">
+                <div class="PageHeaderInner">
+                    <div class="PageHeaderLeft" id="pageHeaderLeft" style="display:none">
+
+    <div class='RelatedLinksItemSmall FL'>
+        <a href='/game/God_of_War/365' style="display:block" title='View stats for God of War'>
+            <img src='https://static-cdn.jtvnw.net/ttv-boxart/6369_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for God of War' data-isgamelink='' data-gamename='God of War' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FL'>
+        <a href='/game/Forza_Horizon_6/365' style="display:block" title='View stats for Forza Horizon 6'>
+            <img src='https://static-cdn.jtvnw.net/ttv-boxart/1991115310_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for Forza Horizon 6' data-isgamelink='' data-gamename='Forza Horizon 6' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FL'>
+        <a href='/game/Ultima_Online/365' style="display:block" title='View stats for Ultima Online'>
+            <img src='https://static-cdn.jtvnw.net/ttv-boxart/5288_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for Ultima Online' data-isgamelink='' data-gamename='Ultima Online' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FL'>
+        <a href='/game/Warhammer/365' style="display:block" title='View stats for Warhammer'>
+            <img src='https://static-cdn.jtvnw.net/ttv-boxart/508798-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for Warhammer' data-isgamelink='' data-gamename='Warhammer' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FL'>
+        <a href='/game/Quiz_Show/365' style="display:block" title='View stats for Quiz Show'>
+            <img src='https://static-cdn.jtvnw.net/ttv-boxart/17085_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for Quiz Show' data-isgamelink='' data-gamename='Quiz Show' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+                    </div>
+                        <div class="PageHeaderMiddle" id="pageHeaderMiddle">
+                            <div class="PageHeaderMiddleTop">
+
+                                    <div class="PageHeaderMiddleConBasic">
+
+                                        <h1 class="PageHeaderMiddleTopH">Games streamed on Twitch</h1>
+
+                                            <span>past 365 days</span>
+                                        
+                                    </div>
+
+
+
+                            </div>
+
+                            
+                        </div>
+
+                    <div class="PageHeaderRight" id="pageHeaderRight" style="display:none">
+
+    <div class='RelatedLinksItemSmall FR'>
+        <a href='/channel/smokyodrift/365' style="display:block" title='View stats for SmokyoDrift'>
+            <img src='https://static-cdn.jtvnw.net/jtv_user_pictures/981d7a60-c36c-4dd1-adc3-f32578f24eaa-profile_image-150x150.png?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for SmokyoDrift' data-ischannellink='' data-channelname='SmokyoDrift' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FR'>
+        <a href='/channel/zerxwallin/365' style="display:block" title='View stats for ZerxWallin'>
+            <img src='https://static-cdn.jtvnw.net/jtv_user_pictures/cbc4bebe-f2a4-48b7-9915-473ab5256deb-profile_image-150x150.png?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for ZerxWallin' data-ischannellink='' data-channelname='ZerxWallin' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FR'>
+        <a href='/channel/sboogz/365' style="display:block" title='View stats for sboogz'>
+            <img src='https://static-cdn.jtvnw.net/jtv_user_pictures/6c068f0a-fb3b-4abf-b017-db8878929ccd-profile_image-150x150.png?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for sboogz' data-ischannellink='' data-channelname='sboogz' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FR'>
+        <a href='/channel/aoikurumi/365' style="display:block" title='View stats for &#x3042;&#x304A;&#x3044;&#x304F;&#x308B;&#x307F; (aoikurumi)'>
+            <img src='https://static-cdn.jtvnw.net/jtv_user_pictures/574a8e01-67be-4187-a2e6-62103328fcb2-profile_image-150x150.png?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for &#x3042;&#x304A;&#x3044;&#x304F;&#x308B;&#x307F; (aoikurumi)' data-ischannellink='' data-channelname='&#x3042;&#x304A;&#x3044;&#x304F;&#x308B;&#x307F; (aoikurumi)' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+
+    <div class='RelatedLinksItemSmall FR'>
+        <a href='/channel/toastydakid/365' style="display:block" title='View stats for toastydakid'>
+            <img src='https://static-cdn.jtvnw.net/jtv_user_pictures/ed78328d-575f-48a9-8f0f-84fef4250147-profile_image-150x150.png?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100' alt='View stats for toastydakid' data-ischannellink='' data-channelname='toastydakid' />
+        </a>
+            <div class='RelatedLinksButtomText'></div>
+    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="PageSubHeader" id="pageSubHeaderOuter">
+                <div class="PageSubHeaderInner">
+                    <div class="PageSubHeaderLeft" id="pageSubHeaderLeft">
+                                    <div title='View summary stats over the past 365 days' class=' PageSubHeaderTab SelectedLink SelectedTab' onclick='RedirectToUrl("/games/365"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365' >Summary</a></div></div>
+                                    <div title='View trending games over the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/trending"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/trending' >Trending</a></div></div>
+                                    <div title='View most watched over the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/watched"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/watched' >Most watched</a></div></div>
+                                    <div title='View most streamed over the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/streamed"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/streamed' >Most streamed</a></div></div>
+                                    <div title='View games with the highest peak viewers in the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/peakviewers"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/peakviewers' >Peak viewers</a></div></div>
+                                    <div title='View games with the highest peak channels in the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/peakchannels"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/peakchannels' >Peak channels</a></div></div>
+                                    <div title='Distribution of viewership by games on Twitch in the past 365 days' class='PageSubHeaderTab' onclick='RedirectToUrl("/games/365/viewerdistribution"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365/viewerdistribution' >Viewer distribution</a></div></div>
+                    </div>
+                    <div class="PageSubHeaderMiddle" id="pageSubHeaderMiddle">
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTabFirst PageSubHeaderTabAlt PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games/3"); return false;'><div class='SubheaderLinkContainer'><a href='/games/3'>3 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games/7"); return false;'><div class='SubheaderLinkContainer'><a href='/games/7'>7 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games/14"); return false;'><div class='SubheaderLinkContainer'><a href='/games/14'>14 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games"); return false;'><div class='SubheaderLinkContainer'><a href='/games'>30 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games/90"); return false;'><div class='SubheaderLinkContainer'><a href='/games/90'>90 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='RedirectToUrl("/games/180"); return false;'><div class='SubheaderLinkContainer'><a href='/games/180'>180 days</a></div></div>
+                                    <div title='View game stats over the past 365 days' class='PageSubHeaderTab PageSubHeaderTabAlt SelectedLink SelectedTabAlt' onclick='RedirectToUrl("/games/365"); return false;'><div class='SubheaderLinkContainer'><a href='/games/365'>365 days</a></div></div>
+                                    <div title='View more ranges' class='PageSubHeaderTab PageSubHeaderTabAlt' onclick='ToggleMoreRangeLinks("AdditionalRangePickerMiddle");'>
+                                        <div class='SubheaderLinkContainer'>
+                                            <a href='' onclick="return false;">More</a>
+                                        </div>
+                                            <div class="RangeFilterToggleMenu" id="AdditionalRangePickerMiddle" style="display: none;">
+                                                <div class="RangeFilterToggleMenuContainer">
+                                                    <div class="RangeFilterToggleMenuHeader">Available ranges:<div class="RangeFilterToggleLink"><a href="" onclick="return false;">Close</a></div></div>
+
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast">
+
+                                                                <div class="RangeFilterToggleMenuYear ">2026</div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2026january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2026february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2026march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2026april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2026may/">May</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast RangeFilterToggleMenuRowAlt">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2025/">2025</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2025december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2024/">2024</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2024december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast RangeFilterToggleMenuRowAlt">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2023/">2023</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2023december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2022/">2022</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2022december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast RangeFilterToggleMenuRowAlt">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2021/">2021</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2021december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2020/">2020</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2020december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast RangeFilterToggleMenuRowAlt">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2019/">2019</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2019december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2018/">2018</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2018december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  RangeFilterToggleMenuRowNotlast RangeFilterToggleMenuRowAlt">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2017/">2017</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2017december/">Dec</a></div>
+
+                                                        </div>
+<div class="RangeFilterToggleMenuRow  ">
+
+                                                                <div class="RangeFilterToggleMenuYear "><a rel="nofollow" href="/games/2016/">2016</a></div>
+
+
+
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016january/">Jan</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016february/">Feb</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016march/">Mar</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016april/">Apr</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016may/">May</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016june/">Jun</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016july/">Jul</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016august/">Aug</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016september/">Sep</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016october/">Oct</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016november/">Nov</a></div>
+                                                                <div class="RangeFilterToggleMenuMonth "><a rel="nofollow" href="/games/2016december/">Dec</a></div>
+
+                                                        </div>
+
+                                                </div>
+                                            </div>
+
+                                    </div>
+
+                        <div class="PageSubHeaderRight" id="pageSubHeaderRight">
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+                <div id="pageLanguageChooser" class="LanguageChooser">
+                    <div class="LanguageChooserInner">
+                        <a href="" onclick="SullyJS.Util.ShowLanguagePicker(); return false;">
+Currently showing stats for all languages (filter by language)                         </a>
+                    </div>
+                </div>
+
+
+
+            <div class="PageContentContainer">
+                
+<div class="StandardPageContainer">
+    <div class="SetMinScrollable">
+        <div class="InfoPanelContainer">
+
+
+            <div class="InfoStatPanelLongContainer">
+                
+
+    <div class="InfoStatPanelLong ">
+
+        <div class="InfoStatPanelLongWrapper">
+
+            <div class="InfoStatPanelLongHeader" title="Most watched games over the past 365 days">
+                <div class="InfoStatPanelLongHeaderInner">
+                    <h4>Most watched games</h4>
+                </div>
+            </div>
+
+
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Just_Chatting/365" title="View more stats for Just Chatting"><img src="https://static-cdn.jtvnw.net/ttv-boxart/509658-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Just Chatting" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Just_Chatting/365" title="View more stats for Just Chatting">Just Chatting</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most watched games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">2.7 billion</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours watched compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours watched compared to previous 365 days' ></div><span class='Negative'>13.7%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours watched compared to previous 365 days">-433.7M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/League_of_Legends/365" title="View more stats for League of Legends"><img src="https://static-cdn.jtvnw.net/ttv-boxart/21779-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for League of Legends" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/League_of_Legends/365" title="View more stats for League of Legends">League of Legends</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most watched games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">991.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours watched compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours watched compared to previous 365 days' ></div><span class='Negative'>10.5%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours watched compared to previous 365 days">-116.7M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Counter-Strike_Global_Offensive/365" title="View more stats for Counter-Strike"><img src="https://static-cdn.jtvnw.net/ttv-boxart/32399-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Counter-Strike" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Counter-Strike_Global_Offensive/365" title="View more stats for Counter-Strike">Counter-Strike</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most watched games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">767.1 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Positive" title="Hours watched compared to previous 365 days"><div class='PositiveChangeCompare'><img src='/images/fa/angle-up-solid-positive.svg' alt='Hours watched compared to previous 365 days' ></div><span class='Positive'>5.4%</span></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Hours watched compared to previous 365 days">+39.5M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Grand_Theft_Auto_V/365" title="View more stats for Grand Theft Auto V"><img src="https://static-cdn.jtvnw.net/ttv-boxart/32982_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Grand Theft Auto V" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Grand_Theft_Auto_V/365" title="View more stats for Grand Theft Auto V">Grand Theft Auto V</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most watched games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">723 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours watched compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours watched compared to previous 365 days' ></div><span class='Negative'>35.2%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours watched compared to previous 365 days">-393.6M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Valorant/365" title="View more stats for VALORANT"><img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for VALORANT" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Valorant/365" title="View more stats for VALORANT">VALORANT</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most watched games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">521.1 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours watched compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours watched compared to previous 365 days' ></div><span class='Negative'>30.1%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours watched compared to previous 365 days">-223.9M</div>
+        </div>
+    </div>
+</div>
+  
+
+            <div class="InfoStatPanelLongFooter" title="View the most watched games on Twitch">
+                <div class="InfoStatPanelLongFooterInner">
+                    <a href="/games/365/watched">More most watched games</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+                
+
+    <div class="InfoStatPanelLong InfoStatPanelLongMiddle">
+
+        <div class="InfoStatPanelLongWrapper">
+
+            <div class="InfoStatPanelLongHeader" title="Trending games over the past 365 days">
+                <div class="InfoStatPanelLongHeaderInner">
+                    <h4>Trending games</h4>
+                </div>
+            </div>
+
+
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/aRC_Raiders/365" title="View more stats for ARC Raiders"><img src="https://static-cdn.jtvnw.net/ttv-boxart/464339927-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for ARC Raiders" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/aRC_Raiders/365" title="View more stats for ARC Raiders">ARC Raiders</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Trending games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">307 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">More hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Positive" title="Change in hours watched compared to previous 365 days"><div class='PositiveChangeCompare'><img src='/images/fa/angle-up-solid-positive.svg' alt='Change in hours watched compared to previous 365 days' ></div><span class='Positive'>4,634%</span></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Change in hours watched compared to previous 365 days"></div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Travel_and_outdoors/365" title="View more stats for IRL"><img src="https://static-cdn.jtvnw.net/ttv-boxart/509672-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for IRL" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Travel_and_outdoors/365" title="View more stats for IRL">IRL</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Trending games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">161.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">More hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Positive" title="Change in hours watched compared to previous 365 days"><div class='PositiveChangeCompare'><img src='/images/fa/angle-up-solid-positive.svg' alt='Change in hours watched compared to previous 365 days' ></div><span class='Positive'>66.3%</span></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Change in hours watched compared to previous 365 days"></div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Ea_Sports_FC_26/365" title="View more stats for EA Sports FC 26"><img src="https://static-cdn.jtvnw.net/ttv-boxart/624536948_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for EA Sports FC 26" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Ea_Sports_FC_26/365" title="View more stats for EA Sports FC 26">EA Sports FC 26</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Trending games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">142.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">More hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop" title="Change in hours watched compared to previous 365 days"></div>
+            <div class="InfoStatPanelLongRightBottom" title="Change in hours watched compared to previous 365 days"></div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Battlefield_168648543/365" title="View more stats for Battlefield 6"><img src="https://static-cdn.jtvnw.net/ttv-boxart/168648543_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Battlefield 6" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Battlefield_168648543/365" title="View more stats for Battlefield 6">Battlefield 6</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Trending games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">89.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">More hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop" title="Change in hours watched compared to previous 365 days"></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Change in hours watched compared to previous 365 days"></div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Call_of_Duty_Black_ops_7/365" title="View more stats for Call of Duty: Black Ops 7"><img src="https://static-cdn.jtvnw.net/ttv-boxart/2012789438-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Call of Duty: Black Ops 7" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Call_of_Duty_Black_ops_7/365" title="View more stats for Call of Duty: Black Ops 7">Call of Duty: Black Ops 7</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Trending games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">84.4 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">More hours watched</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop" title="Change in hours watched compared to previous 365 days"></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Change in hours watched compared to previous 365 days"></div>
+        </div>
+    </div>
+</div>
+  
+
+            <div class="InfoStatPanelLongFooter" title="View the trending games on Twitch">
+                <div class="InfoStatPanelLongFooterInner">
+                    <a href="/games/365/trending">More trending games</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+                
+
+    <div class="InfoStatPanelLong ">
+
+        <div class="InfoStatPanelLongWrapper">
+
+            <div class="InfoStatPanelLongHeader" title="Most streamed games over the past 365 days">
+                <div class="InfoStatPanelLongHeaderInner">
+                    <h4>Most streamed games</h4>
+                </div>
+            </div>
+
+
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Fortnite/365" title="View more stats for Fortnite"><img src="https://static-cdn.jtvnw.net/ttv-boxart/33214-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Fortnite" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Fortnite/365" title="View more stats for Fortnite">Fortnite</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most streamed games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">38.6 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours streamed</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours streamed compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours streamed compared to previous 365 days' ></div><span class='Negative'>31.3%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours streamed compared to previous 365 days">-17.5M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Just_Chatting/365" title="View more stats for Just Chatting"><img src="https://static-cdn.jtvnw.net/ttv-boxart/509658-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Just Chatting" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Just_Chatting/365" title="View more stats for Just Chatting">Just Chatting</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most streamed games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">36.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours streamed</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours streamed compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours streamed compared to previous 365 days' ></div><span class='Negative'>0.6%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours streamed compared to previous 365 days">-218K</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Valorant/365" title="View more stats for VALORANT"><img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for VALORANT" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Valorant/365" title="View more stats for VALORANT">VALORANT</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most streamed games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">23.9 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours streamed</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours streamed compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours streamed compared to previous 365 days' ></div><span class='Negative'>22.0%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours streamed compared to previous 365 days">-6.7M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  InfoStatPanelLongRowAlt" title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Grand_Theft_Auto_V/365" title="View more stats for Grand Theft Auto V"><img src="https://static-cdn.jtvnw.net/ttv-boxart/32982_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Grand Theft Auto V" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Grand_Theft_Auto_V/365" title="View more stats for Grand Theft Auto V">Grand Theft Auto V</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most streamed games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">21.5 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours streamed</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Negative" title="Hours streamed compared to previous 365 days"><div class='NegativeChangeCompare'><img src='/images/fa/angle-down-solid-negative.svg' alt='Hours streamed compared to previous 365 days' ></div><span class='Negative'>9.6%</span></div>
+            <div class="InfoStatPanelLongRightBottom Negative" title="Hours streamed compared to previous 365 days">-2.3M</div>
+        </div>
+    </div>
+</div>
+  
+<div class="InfoStatPanelLongRow  " title="">
+    <div class="InfoStatPanelLongInner">
+        <a href="/game/Minecraft/365" title="View more stats for Minecraft"><img src="https://static-cdn.jtvnw.net/ttv-boxart/27471_IGDB-136x190.jpg?imenable=1&amp;impolicy=user-profile-picture&amp;imwidth=100" class="InfoStatPanelLongLeftImage" alt="View more stats for Minecraft" /></a>
+        <div class="InfoStatPanelLongLabelLeft"><a href="/game/Minecraft/365" title="View more stats for Minecraft">Minecraft</a></div>
+        <div class="InfoStatPanelLongLabelMiddle" title="Most streamed games over the past 365 days">
+            <div class="InfoStatPanelLongLabelMiddleTop">19.6 million</div>
+            <div class="InfoStatPanelLongLabelMiddleBottom">Hours streamed</div>
+        </div>
+        <div class="InfoStatPanelLongRight">
+            <div class="InfoStatPanelLongRightTop Positive" title="Hours streamed compared to previous 365 days"><div class='PositiveChangeCompare'><img src='/images/fa/angle-up-solid-positive.svg' alt='Hours streamed compared to previous 365 days' ></div><span class='Positive'>1.1%</span></div>
+            <div class="InfoStatPanelLongRightBottom Positive" title="Hours streamed compared to previous 365 days">+203.6K</div>
+        </div>
+    </div>
+</div>
+  
+
+            <div class="InfoStatPanelLongFooter" title="View the most streamed games on Twitch">
+                <div class="InfoStatPanelLongFooterInner">
+                    <a href="/games/365/streamed">More most streamed games</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+            </div>
+
+            <div class="LineBreakWithSpace"></div>
+
+            <div class="InfoPanelContainer">
+                
+<div class="ChartPanelWide">
+    <div id="topxgamesummary" class="LineChartContainer">
+        <div class="ChartHeader">
+            <div class="ChartTitleText">
+                <h3 class="ChartTitle" id="lblChartTitle">Top 10 most watched Twitch games viewership, between Monday 23rd June and Monday 22nd June</h3>
+            </div>
+            <div class="ChartOptions">
+                <a href="" class="ChartResize" id='expandCollapse' onclick="SullyJS.Charts.ExpandCollapseChart(this,'ChartPanelWide','CanvasWrapWide'); return false;">Full screen</a>
+                    <a href="" class="ChartResize" onclick="SullyJS.Charts.SaveChart(this); return false;" title="Top 10 most watched Twitch games viewership, between Monday 23rd June and Monday 22nd June">Download image</a>
+            </div>
+        </div>
+        <div class="ChartRangeRow">
+            <div id="pnlChartDescription" style="display:none">
+                <div class="ChartRangeLabel" id="litDescriptionLabel"></div>
+            </div>
+            <div id="pnlChartMinLabel" style="display:inline">
+                <div class="ChartRangeLabel" id="litRangeMinLabel"></div>
+                <div class="ChartRangeValue" id="litRangeMinValue"></div>
+            </div>
+            <div id="pnlChartMaxLabel" style="display:inline">
+                <div class="ChartRangeLabel" id="litRangeMaxLabel"></div>
+                <div class="ChartRangeValue" id="litRangeMaxValue"></div>
+            </div>
+            <div class="ChartStyleChanger">
+                <a href="" class="ChartResize ChartStyleOption" onclick="SullyJS.Charts.RestyleChart(this,2); return false;" id="lineStyleOption" style="display:none">Show offline</a>
+            </div>
+        </div>
+        <div class="ChartRangeRowHidden" style="display:none">
+        </div>
+        <div class="CanvasWrapWide" id="chartwrappanel">
+            <canvas id="canvasLineChart" class="LineChart"></canvas>
+        </div>
+        <div id="ChartSlider" style="display:none" class="ChartSliderContainer ChartFooter">
+            <input id="inSliderLeft_cea5a65b-524c-49d4-a903-7964e3fdefac" style="display:none" />
+            <a id="LeftText" class="ChartSliderLeft" onclick="SullyJS.Charts.Line.ShowSliderCalendar(this,'Start'); return false;">Start Text</a>
+            <div class="ChartSliderMiddle">
+                <div id="MiddleContainer" class="ChartSliderWrapper"></div>
+            </div>
+            <input id="inSliderRight_f3123176-fd58-4d08-8be9-a313196e0edd" style="display:none" />
+            <a id="RightText" class="ChartSliderRight" onclick="SullyJS.Charts.Line.ShowSliderCalendar(this,'End'); return false;">End Text</a>
+        </div>
+    </div>
+</div>
+            </div>
+
+
+
+            <div class="LineBreakWithSpace"></div>
+
+            <div class="InfoPanelContainer">
+                
+<div class="ChartPanelWide">
+    <div id="twitchuniquegames" class="LineChartContainer">
+        <div class="ChartHeader">
+            <div class="ChartTitleText">
+                <h3 class="ChartTitle" id="lblChartTitle">Average/peak daily games, between Monday 23rd June and Monday 22nd June</h3>
+            </div>
+            <div class="ChartOptions">
+                <a href="" class="ChartResize" id='expandCollapse' onclick="SullyJS.Charts.ExpandCollapseChart(this,'ChartPanelWide','CanvasWrapWide'); return false;">Full screen</a>
+                    <a href="" class="ChartResize" onclick="SullyJS.Charts.SaveChart(this); return false;" title="Average/peak daily games, between Monday 23rd June and Monday 22nd June">Download image</a>
+            </div>
+        </div>
+        <div class="ChartRangeRow">
+            <div id="pnlChartDescription" style="display:none">
+                <div class="ChartRangeLabel" id="litDescriptionLabel"></div>
+            </div>
+            <div id="pnlChartMinLabel" style="display:inline">
+                <div class="ChartRangeLabel" id="litRangeMinLabel"></div>
+                <div class="ChartRangeValue" id="litRangeMinValue"></div>
+            </div>
+            <div id="pnlChartMaxLabel" style="display:inline">
+                <div class="ChartRangeLabel" id="litRangeMaxLabel"></div>
+                <div class="ChartRangeValue" id="litRangeMaxValue"></div>
+            </div>
+            <div class="ChartStyleChanger">
+                <a href="" class="ChartResize ChartStyleOption" onclick="SullyJS.Charts.RestyleChart(this,2); return false;" id="lineStyleOption" style="display:none">Show offline</a>
+            </div>
+        </div>
+        <div class="ChartRangeRowHidden" style="display:none">
+        </div>
+        <div class="CanvasWrapWide" id="chartwrappanel">
+            <canvas id="canvasLineChart" class="LineChart"></canvas>
+        </div>
+        <div id="ChartSlider" style="display:none" class="ChartSliderContainer ChartFooter">
+            <input id="inSliderLeft_3ffbd254-52bf-41e4-929d-2036fcd1ccff" style="display:none" />
+            <a id="LeftText" class="ChartSliderLeft" onclick="SullyJS.Charts.Line.ShowSliderCalendar(this,'Start'); return false;">Start Text</a>
+            <div class="ChartSliderMiddle">
+                <div id="MiddleContainer" class="ChartSliderWrapper"></div>
+            </div>
+            <input id="inSliderRight_dd27bcb4-bb0e-462d-bde2-61af866c2bb0" style="display:none" />
+            <a id="RightText" class="ChartSliderRight" onclick="SullyJS.Charts.Line.ShowSliderCalendar(this,'End'); return false;">End Text</a>
+        </div>
+    </div>
+</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="ContentFooter"></div>
+
+
+            </div>
+        </div>
+        <div style="clear:both"></div>
+
+        <div id="TimezonePicker" class="TimezonePicker" style="display:none" onclick="SullyJS.Util.ShowTimezonePicker(); return false;">
+            <div id="timePickerLoaded" style="display:none" class="TimezonePickerContent" onclick="SullyJS.Util.ShowTimezonePrevent(event);">
+                <span class="TimezonePickerClose" onclick="SullyJS.Util.ShowTimezonePicker(); return false;">&times;</span>
+                <p id="TimezonePickerHeader"></p>
+                <span id="TimezonePickerSubHeader" class="TimezonePickerContentSubHeader"></span>
+                <hr />
+                <select class="TimezonePickerSelect Selector" id="TimezonePickerSelect" onchange="SullyJS.Util.TimezonePickerSelected();">
+                </select>
+            </div>
+            <div id="timePickerLoading">
+                Loading...
+            </div>
+        </div>
+        <div id="LanguagePicker" class="TimezonePicker" style="display:none" onclick="SullyJS.Util.ShowLanguagePicker(); return false;">
+            <div class="TimezonePickerContent" onclick="SullyJS.Util.ShowLanguagePrevent(event);">
+                <span class="TimezonePickerClose" onclick="SullyJS.Util.ShowLanguagePicker(); return false;">&times;</span>
+                <p id="LanguagePickerHeader"></p>
+                <hr />
+                <select class="TimezonePickerSelect Selector" id="LanguagePickerSelect" onchange="SullyJS.Util.LanguagePickerSelected();">
+                </select>
+            </div>
+        </div>
+
+        <div class="FooterContainer">
+            <div class="PageFooter">
+                <a href="https://SullyGnome.com">SullyGnome.com</a> © is in no way affiliated with <a href="https://www.twitch.tv/" target="_blank">Twitch</a>. Please do not scrape this site, it's a hobby project with limited resources.
+                <a href="/policy/tos">Terms</a>
+                <a href="/policy/cookie">Cookies</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <link rel="icon" type="image/x-icon" href="https://www.sullygnome.com/images/fav/favicon.ico" />
+
+    
+    
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/lib/jquery/jquery-3.2.1.min.js"></script>
+        <script src="/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="/js/sully.bundle.min.js?v=Zb6Xk3YMMJyTAMwZxXkzMFIsZxQTlAZTqGbuQu3CXK4"></script>
+            <script src="/lib/chartjs/chart.umd.min.js?v=ZssGko3gMYiqGhxv0-2irP0-TapoZ2tNzB9Kqulb3Tk"></script>
+            <script src="/js/chart.bundle.min.js?v=QbUn77T6yUYojAJeDOk5zw97ip0eeSa7aZoNvjUmezM"></script>
+            <script src="/lib/nouislider/nouislider.min.js?v=pFL-L-I06AXlGT2wioCBdIjqc64n94inMAG608_Vfvc"></script>
+            <link rel="stylesheet" href="/lib/nouislider/nouislider.min.css?v=xCkOxQLhwheA3r9Nn0w83UHv5eDKeqoWQtb49iL7VlA" />
+
+
+
+        <script>
+            var ShowAnalytics = true;
+        </script>
+    
+
+    <script>
+
+        if(isDarkMode)
+        {
+            SullyJS.Util.SetDarkMode();
+        }
+
+        var wrapper = $('[id=dmWrapper]');
+        wrapper.removeClass('notransition');
+        wrapper.find('.notransition').removeClass('notransition');
+
+    </script>
+
+    
+    <script type="text/javascript">
+        SullyJS.Charts.Line.CreateLineChart("twitchuniquegames", "TwitchUniqueGames", 365, 0, 0, "",null,null,0,0,null,true,4295+1, null, 0);
+        SullyJS.Charts.Line.CreateLineChart("topxgamesummary", "TopXGameSummary", 365, 0, 0, "", null, null,0,0, null, false,4295+1, null,0);
+    </script>
+
+
+    
+        <script>
+            $('[id*=showSearchIcon]').show();
+            SullyJS.Util.RunStartEvents();
+            $(function () {
+                SullyJS.Search.CreateSearchCombo();
+                //SullyJS.Pages.CreateToolTips();
+            });
+
+            let thisIsABot = false
+            try {
+                thisIsABot = /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i.test(navigator.userAgent);
+            }
+            catch (ex) {
+
+            }
+            if (thisIsABot) {
+                $('[id=downloadchart]').attr('href','');
+            }
+
+        </script>
+    
+</body>
+</html>
