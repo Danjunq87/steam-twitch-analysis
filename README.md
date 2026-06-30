@@ -129,7 +129,10 @@ The project follows a complete ETL (Extract, Transform, Load) workflow, combinin
 
 ## 📸 Dashboard Preview
 
-> Dashboard screenshots will be added soon.
+<img width="1835" height="689" alt="scr1" src="https://github.com/user-attachments/assets/b55f350b-87ae-4381-8810-57cd486cf9cd" />
+<img width="1817" height="657" alt="scr2" src="https://github.com/user-attachments/assets/0c0aab19-7cb2-4f10-9dcf-8a97412499ae" />
+<img width="1832" height="733" alt="scr3" src="https://github.com/user-attachments/assets/77892d54-a596-40fc-ac54-7dd50b04fae7" />
+<img width="1794" height="743" alt="scr4" src="https://github.com/user-attachments/assets/c4ab3848-3ab3-4a0a-8867-fb6a6b961728" />
 
 ---
 
